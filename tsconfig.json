@@ -3,8 +3,7 @@
     "target": "es2015",
     "module": "commonjs",
     "moduleResolution": "node",
-    "rootDir": "./src",
-    "baseUrl": "./src",
+    "rootDir": "src",
     "outDir": "./dist",
     "strict": true,
     "noImplicitAny": true,
@@ -14,5 +13,5 @@
     "noUnusedParameters": true,
     "allowJs": true
   },
-  "include": [".babelrc.js", "src/"]
+  "include": ["src/.babelrc.js", "src"]
 }

@@ -3,15 +3,15 @@ const fs = require("fs");
 const path = require("path");
 const babel = require("@babel/core");
 const prettier = require("prettier");
-const options = require("../.babelrc.js");
+const options = require(".babelrc.js");
 
-// 現在はpathしかオプションを受けつけない
+// TODO
 if (process.argv.length !== 3) {
   throw Error("Invalid Option... this tool allows users to set only one option (path).");
 }
 
-// 再帰ファイル探索
-// 参考：https://qiita.com/amay077/items/cc6ee3e66040a5097230
+// searching files recursively
+// ref：https://qiita.com/amay077/items/cc6ee3e66040a5097230
 type fileCallbackType = (path: string) => void;
 type errCallbackType = (err: Error) => void;
 
@@ -25,7 +25,7 @@ const walk = (inputPath: string, fileCallback: fileCallbackType, errCallback?: e
       files.forEach((f: File) => {
           const fullPath = path.join(inputPath, f);
           if (fs.statSync(fullPath).isDirectory()) {
-              // ディレクトリなら再帰する
+              // This recursion happens if the path indicates a directory
               walk(fullPath, fileCallback);
           } else {
               fileCallback(fullPath);
@@ -34,15 +34,15 @@ const walk = (inputPath: string, fileCallback: fileCallbackType, errCallback?: e
   });
 };
 
-// エラー処理
+// error message
 const error = (err: Error | null): void => {
   if (err == null) {
     return;
   }
-  console.log("Receive err:" + err);
+  console.log(err);
 };
 
-// 変換処理 (babel, prettier, rename)
+// convert (babel, prettier, rename)
 const converter = (fullPath: string) => {
   const isJsFile = fullPath.match(/(js|jsx)$/);
   if (isJsFile == null) {
@@ -52,16 +52,35 @@ const converter = (fullPath: string) => {
   babel.transformFileAsync(fullPath, options).then((result: any) => {
     const babeledCode = result.code;
     const deletedAtFlowCode = deleteAtFlow(babeledCode);
-    // configの扱いどうする？
-    const formattedCode = prettier.format(deletedAtFlowCode, { semi: false });
+    // prettier
+    // TODO
+    const defaultPath = path.resolve("") + "/.prettierrc.js";
+    if (isExistFile(defaultPath) !== true) {
+      throw Error(".prettier.js is required in the directory where you run this script.");
+    }
+    const prettierConfig = require(defaultPath);
+    const formattedCode = prettier.format(deletedAtFlowCode, prettierConfig);
+    fs.writeFile(fullPath, deletedAtFlowCode, error);
+    // js → ts,tsx
     const extension = isJsxFile(formattedCode) ? "tsx" : "ts";
     const newPath = fullPath.replace(/(js|jsx)$/, "") + extension;
-    fs.writeFile(fullPath, deletedAtFlowCode, error);
     fs.rename(fullPath, newPath, error);
   }).catch((e: Error) => error(e));
 };
 
-// jsかjsxかの判断
+// confirm existance of prettier config
+const isExistFile = (file: string): boolean | undefined => {
+  try {
+    fs.statSync(file);
+    return true;
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      return false;
+    }
+  }
+};
+
+// judge whether the file is a jsx file or not
 const isJsxFile = (code: string): boolean => {
   const lines = code.split("\n").filter((line: string) =>
     line.match(/^\/\//) == null && line.match(/from ('|")react('|")/),
@@ -72,15 +91,14 @@ const isJsxFile = (code: string): boolean => {
   return false;
 };
 
+// delete @flow
 const deleteAtFlow = (code: string): string => {
   const lines = code.split("\n");
   const newLines = lines.filter((line: string) => line.match(/@flow/) == null);
   return newLines.join("\n");
 };
 
-// メイン処理
-// 最後の要素をpathと認識する
-// 引数が無いときはカレントディレクトリ
+// main process
 const filePath = process.argv.slice(-1)[0] || ".";
 const absPath = path.resolve(filePath);
 walk(absPath, converter, error);
