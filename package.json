@@ -4,7 +4,7 @@
   "description": "CLI tool for converting Flow code into Typescript",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -20,7 +20,7 @@
     "cli"
   ],
   "author": {
-    "name": "Daiki Nihsikawa",
+    "name": "Daiki Nishikawa",
     "email": "nd.12021218@gmail.com"
   },
   "bugs": {
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@types/node": "^10.11.7",
     "ts-loader": "^5.2.1",
+    "tslint": "^5.11.0",
     "typescript": "^3.1.3"
   }
 }

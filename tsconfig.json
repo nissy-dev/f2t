@@ -12,5 +12,7 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "noUnusedParameters": true,
-  }
+    "allowJs": true
+  },
+  "include": [".babelrc.js", "src/"]
 }
