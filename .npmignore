@@ -2,6 +2,7 @@ src
 tset
 tsconfig.json
 tslint.json
+LICENSE
 
 node_modules
 yarn.lock
