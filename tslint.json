@@ -5,6 +5,7 @@
     "no-var-requires": false,
     "no-console": [true, "warn"],
     "semicolon": false,
-    "quotemark": [true, "single"]
+    "quotemark": [true, "single"],
+    "ordered-imports": false,
   }
 }

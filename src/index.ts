@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import * as babel from '@babel/core'
 import * as fs from 'fs'
 import * as path from 'path'
+import * as babel from '@babel/core'
 import * as prettier from 'prettier'
-import * as babelConfig from './.babelrc.js'
+import * as babelConfig from './babel.config.js'
 import * as prettierDefaultConfig from './.prettierrc.js'
 
 // searching files recursively

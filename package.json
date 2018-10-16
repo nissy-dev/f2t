@@ -1,6 +1,6 @@
 {
   "name": "f2t",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "CLI tool for converting Flow code into Typescript",
   "main": "dist/index.js",
   "license": "MIT",
@@ -39,7 +39,6 @@
   "devDependencies": {
     "@types/node": "^10.11.7",
     "@types/prettier": "^1.13.2",
-    "ts-loader": "^5.2.1",
     "tslint": "^5.11.0",
     "typescript": "^3.1.3"
   }
