@@ -1,5 +1,5 @@
 module.exports = {
-  parser: 'babylon'
+  parser: 'babylon',
   printWidth: 80,
   tabWidth: 2,
   trailingComma: 'all',
