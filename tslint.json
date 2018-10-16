@@ -3,6 +3,8 @@
   "rules": {
     "object-literal-sort-keys" : false,
     "no-var-requires": false,
-    "no-console": [true, "warn"]
+    "no-console": [true, "warn"],
+    "semicolon": false,
+    "quotemark": [true, "single"]
   }
 }

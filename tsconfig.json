@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
     "rootDir": "src",
@@ -11,7 +11,10 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "noUnusedParameters": true,
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {"@babel/core": ["types/base-core"]},
+    "typeRoots": ["types", "node_modules/@types"],
   },
-  "include": ["src/.babelrc.js", "src"]
+  "include": ["src/.prettierrc.js", "src/.babelrc.js", "src"],
 }

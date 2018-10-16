@@ -1,4 +1,4 @@
-module.exports = {
+module.exports =  {
   "plugins": [
     "@babel/syntax-class-properties",
     "@babel/syntax-flow",

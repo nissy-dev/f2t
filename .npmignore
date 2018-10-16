@@ -1,8 +1,7 @@
+node_modules
 src
-tset
+types
+LICENSE
 tsconfig.json
 tslint.json
-LICENSE
-
-node_modules
 yarn.lock
