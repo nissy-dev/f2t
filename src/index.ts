@@ -94,7 +94,7 @@ const deleteAtFlow = (code: string): string => {
 const main = () => {
   // TODO: とりあえずコマンドライン引数は１つのみとる
   if (process.argv.length !== 3) {
-    throw Error('Invalid Option... this tool allows users to set only one option (path).')
+    throw Error('Invalid argument... this tool allows users to set only one option (path).')
   }
   const filePath = process.argv.slice(-1)[0] || '.'
   const absPath = path.resolve(filePath)
