@@ -3,8 +3,8 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as babel from '@babel/core'
 import * as prettier from 'prettier'
-import * as babelConfig from './babel.config.js'
-import * as prettierDefaultConfig from './.prettierrc.js'
+import * as babelConfig from '../babel.config.js'
+import * as prettierDefaultConfig from '../.prettierrc.js'
 
 // searching files recursively
 // ref：https://qiita.com/amay077/items/cc6ee3e66040a5097230
@@ -45,11 +45,12 @@ const converter = (fullPath: string) => {
     return
   }
 
-  babel.transformFileAsync(fullPath, babelConfig).then((result: any) => {
+  const config = { cwd: path.resolve(__dirname), ...babelConfig }
+  babel.transformFileAsync(fullPath, config).then((result: any) => {
     const babeledCode = result.code
     const deletedAtFlowCode = deleteAtFlow(babeledCode)
     // prettier
-    const defaultPath = path.resolve('') + '/.prettierrc.js';
+    const defaultPath = path.resolve('') + '/.prettierrc.js'
     const prettierConfig = isExistFile(defaultPath) ? require(defaultPath) : prettierDefaultConfig
     const formattedCode = prettier.format(deletedAtFlowCode, prettierConfig)
     fs.writeFile(fullPath, formattedCode, error)
@@ -57,6 +58,7 @@ const converter = (fullPath: string) => {
     const extension = isJsxFile(formattedCode) ? 'tsx' : 'ts'
     const newPath = fullPath.replace(/(js|jsx)$/, '') + extension
     fs.rename(fullPath, newPath, error)
+    // console.log(`${fullPath}: Converting is sucessful!!`)
   }).catch((e: Error) => error(e))
 }
 
