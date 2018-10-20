@@ -3,7 +3,6 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "rootDir": ".",
     "outDir": "./dist",
     "strict": true,
     "noImplicitAny": true,

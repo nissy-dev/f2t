@@ -5,5 +5,3 @@ LICENSE
 tsconfig.json
 tslint.json
 yarn.lock
-.prettierrc.js
-babel.config.js
