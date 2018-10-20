@@ -4,6 +4,6 @@ module.exports =  {
     "@babel/plugin-syntax-class-properties",
     "@babel/plugin-syntax-flow",
     "@babel/plugin-syntax-jsx",
-    "babel-plugin-flow2ts"
+    "@cureapp/babel-plugin-flow-to-typescript"
   ]
 }
