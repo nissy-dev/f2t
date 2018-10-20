@@ -4,7 +4,7 @@ module.exports =  {
     "@babel/plugin-syntax-class-properties",
     "@babel/plugin-syntax-flow",
     "@babel/plugin-syntax-jsx",
-    "./babel-plugin-flow-to-typescript-react.js"
+    "./babel-plugin-flow-to-typescript-react.js",
     "@cureapp/babel-plugin-flow-to-typescript"
   ]
 }
