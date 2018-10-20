@@ -12,6 +12,5 @@ $ f2t ./src
 * `@babel/plugin-syntax-class-properties`
 * `@babel/plugin-syntax-flow`
 * `@babel/plugin-syntax-jsx`
-* `babel-plugin-flow2ts`
+* `@cureapp/babel-plugin-flow-to-typescript`
 
-[babel-plugin-flow2ts](https://github.com/nd-02110114/babel-plugin-flow2ts) is my forked plugin.
