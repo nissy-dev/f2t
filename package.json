@@ -1,6 +1,6 @@
 {
   "name": "f2t",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "CLI tool for converting Flow code into Typescript",
   "main": "dist/index.js",
   "license": "MIT",
