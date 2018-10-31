@@ -50,9 +50,8 @@ const converter = (fullPath: string) => {
     const babeledCode = result.code
     const deletedAtFlowCode = deleteAtFlow(babeledCode)
     // prettier
-    const defaultPath = path.resolve('') + '/.prettierrc.js'
-    const prettierConfig = isExistFile(defaultPath) ? require(defaultPath) : prettierDefaultConfig
-    const formattedCode = prettier.format(deletedAtFlowCode, prettierConfig)
+    // @ts-ignore
+    const formattedCode = prettier.format(deletedAtFlowCode, prettierDefaultConfig)
     fs.writeFile(fullPath, formattedCode, error)
     // js → ts,tsx
     const extension = isJsxFile(formattedCode) ? 'tsx' : 'ts'
@@ -60,18 +59,6 @@ const converter = (fullPath: string) => {
     fs.rename(fullPath, newPath, error)
     // console.log(`${fullPath}: Converting is sucessful!!`)
   }).catch((e: Error) => error(e))
-}
-
-// confirm existance of prettier config
-const isExistFile = (file: string): boolean | undefined => {
-  try {
-    fs.statSync(file);
-    return true
-  } catch (err) {
-    if (err.code === 'ENOENT') {
-      return false
-    }
-  }
 }
 
 // judge whether the file is a jsx file or not

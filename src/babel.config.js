@@ -1,5 +1,5 @@
 module.exports =  {
-  "plugins": [
+  plugins: [
     "@babel/plugin-syntax-object-rest-spread",
     "@babel/plugin-syntax-class-properties",
     "@babel/plugin-syntax-flow",
