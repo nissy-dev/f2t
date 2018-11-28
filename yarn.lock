@@ -135,10 +135,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@cureapp/babel-plugin-flow-to-typescript@^0.3.6":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@cureapp/babel-plugin-flow-to-typescript/-/babel-plugin-flow-to-typescript-0.3.6.tgz#9d24f1f395b4b031b1423ce2621de772c78d2484"
-  integrity sha512-5bq4BwjiU1Oh7DTWRXwCpI6bh8HNgIllV5ybc65E+s3bhFuIEfZJ1rERXum5+cintS3pKoj03gVK5sPsQHZT+Q==
+"@cureapp/babel-plugin-flow-to-typescript@^0.3.7":
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/@cureapp/babel-plugin-flow-to-typescript/-/babel-plugin-flow-to-typescript-0.3.7.tgz#2521e485ca2684c5c47f018ac8cd8b964229289f"
+  integrity sha512-GLYGzuLooWbv9e91QK3ECMXU6q9Tg4OacUJzAIw0nAL7LCfewjC4q+crFPWDII2qM9BFokjLV0KXBnOUTPF45Q==
   dependencies:
     "@babel/core" "^7.0.0-beta.44"
     "@babel/traverse" "^7.0.0-beta.44"

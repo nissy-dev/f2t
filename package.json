@@ -34,7 +34,7 @@
     "@babel/plugin-syntax-class-properties": "^7.0.0",
     "@babel/plugin-syntax-flow": "^7.0.0",
     "@babel/plugin-syntax-jsx": "^7.0.0",
-    "@cureapp/babel-plugin-flow-to-typescript": "^0.3.6",
+    "@cureapp/babel-plugin-flow-to-typescript": "^0.3.7",
     "prettier": "^1.14.3"
   },
   "devDependencies": {
