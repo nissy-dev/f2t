@@ -30,12 +30,16 @@ export const walk = async (inputPath: string, fileCallback: fileCallbackType): P
     }
 
     files.forEach(async (f: string) => {
-      const fullPath = path.join(inputPath, f)
-      if (fs.statSync(fullPath).isDirectory()) {
-        // This recursion happens if the path indicates a directory
-        walk(fullPath, fileCallback)
-      } else {
-         await fileCallback(fullPath)
+      try {
+        const fullPath = path.join(inputPath, f)
+        if (fs.statSync(fullPath).isDirectory()) {
+          // This recursion happens if the path indicates a directory
+          await walk(fullPath, fileCallback)
+        } else {
+           await fileCallback(fullPath)
+        }
+      } catch(e) {
+        throw e
       }
     })
   })

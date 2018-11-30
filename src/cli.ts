@@ -15,24 +15,28 @@ const fsThrowError = (err: NodeJS.ErrnoException) => {
 
 // convert (babel, prettier, rename)
 const converter = async (fullPath: string): Promise<void> => {
-  const isJsFile = fullPath.match(/(js|jsx)$/)
-  if (isJsFile == null) {
-    return
+  try {
+    const isJsFile = fullPath.match(/(js|jsx)$/)
+    if (isJsFile == null) {
+      return
+    }
+  
+    const config = { cwd: path.join(__dirname, '../'), ...babelConfig }
+    // flow code is compiled by babel
+    const result = await babel.transformFileAsync(fullPath, config)
+    const babeledCode = result.code
+    const deletedAtFlowCode = deleteAtFlow(babeledCode)
+    // prettier
+    // @ts-ignore
+    const formattedCode = prettier.format(deletedAtFlowCode, prettierDefaultConfig)
+    fs.writeFile(fullPath, formattedCode, fsThrowError)
+    // js → ts,tsx
+    const extension = isJsxFile(formattedCode) ? 'tsx' : 'ts'
+    const newPath = fullPath.replace(/(js|jsx)$/, '') + extension
+    fs.rename(fullPath, newPath, fsThrowError)
+  } catch (e) {
+    throw e
   }
-
-  const config = { cwd: path.join(__dirname, '../'), ...babelConfig }
-  // flow code is compiled by babel
-  const result = await babel.transformFileAsync(fullPath, config)
-  const babeledCode = result.code
-  const deletedAtFlowCode = deleteAtFlow(babeledCode)
-  // prettier
-  // @ts-ignore
-  const formattedCode = prettier.format(deletedAtFlowCode, prettierDefaultConfig)
-  fs.writeFile(fullPath, formattedCode, fsThrowError)
-  // js → ts,tsx
-  const extension = isJsxFile(formattedCode) ? 'tsx' : 'ts'
-  const newPath = fullPath.replace(/(js|jsx)$/, '') + extension
-  fs.rename(fullPath, newPath, fsThrowError)
 }
 
 // main process
