@@ -24,19 +24,19 @@ export const deleteAtFlow = (code: string): string => {
 type fileCallbackType = (path: string) => Promise<void>
 
 export const walk = async (inputPath: string, fileCallback: fileCallbackType): Promise<void> => {
-  fs.readdir(inputPath, (err, files) => {
+  return await fs.readdir(inputPath, async (err, files) => {
     if (err) {
       throw err
     }
 
-    files.forEach(async (f: string) => {
+    await files.forEach(async (f: string) => {
       try {
         const fullPath = path.join(inputPath, f)
         if (fs.statSync(fullPath).isDirectory()) {
           // This recursion happens if the path indicates a directory
-          await walk(fullPath, fileCallback)
+          return await walk(fullPath, fileCallback)
         } else {
-           await fileCallback(fullPath)
+          return await fileCallback(fullPath)
         }
       } catch(e) {
         throw e

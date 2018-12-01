@@ -34,6 +34,8 @@ const converter = async (fullPath: string): Promise<void> => {
     const extension = isJsxFile(formattedCode) ? 'tsx' : 'ts'
     const newPath = fullPath.replace(/(js|jsx)$/, '') + extension
     fs.rename(fullPath, newPath, fsThrowError)
+    const cwdPath = path.resolve('.')
+    console.log(`${path.relative(cwdPath, fullPath)} -> ${path.relative(cwdPath, newPath)}`)
   } catch (e) {
     throw e
   }
@@ -44,10 +46,11 @@ const main = async () => {
   const filePath = flags.input
   const absPath = path.resolve(filePath)
   await walk(absPath, converter)
+  // @ts-ignore
+  // console.log(chalk.bold.underline('\n🔥 Finish coverting from flow code to typescript!!'))
 }
 
 main().catch((e: Error) => {
   // @ts-ignore
   console.error(chalk.red(e.stack))
-  process.exit(1)
 })
