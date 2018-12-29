@@ -4,6 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./dist",
+    "lib": ["esnext"],
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -11,8 +12,10 @@
     "alwaysStrict": true,
     "noUnusedParameters": true,
     "allowJs": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {"@babel/core": ["types/base-core"]},
     "typeRoots": ["types", "node_modules/@types"],
+    // "resolveJsonModule": true
   },
+  "include": ["src"]
 }
