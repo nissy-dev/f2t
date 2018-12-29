@@ -4,6 +4,11 @@ CLI tool for converting Flow code into Typescript
 ## Usage
 ```
 $ npx f2t -i ./src
+
+Options:
+  --version    Show version number                                     [boolean]
+  --input, -i  Set the directory path you want to convert    [string] [required]
+  --help       Show help                                               [boolean]
 ```
 
 ## Dependency
