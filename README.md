@@ -3,7 +3,7 @@ CLI tool for converting Flow code into Typescript
 
 ## Usage
 ```
-$ npx f2t ./src
+$ npx f2t -i ./src
 ```
 
 ## Dependency
