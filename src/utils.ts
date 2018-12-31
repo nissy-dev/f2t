@@ -57,7 +57,12 @@ export const listupFiles = (dirPath: string) => {
   return ret;
 };
 
-// convert (babel, prettier, rename)
+/**
+ * convert from js to ts
+ * 1. babel (converting from js to ts)
+ * 2. prettier (code formatting)
+ * 3. rename (js → ts or tsx)
+ */
 export const converter = async (fullPath: string): Promise<void | Error> => {
   try {
     const config = { cwd: path.join(__dirname, '../'), ...babelConfig }
