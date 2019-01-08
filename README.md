@@ -11,7 +11,7 @@ Options:
   --help       Show help                                               [boolean]
 ```
 
-## Dependency
+## Dependencies
 ### babel plugin
 * `@babel/plugin-syntax-object-rest-spread`
 * `@babel/plugin-syntax-class-properties`
