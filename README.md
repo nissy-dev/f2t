@@ -1,4 +1,5 @@
 # f2t
+[![npm version](https://badge.fury.io/js/f2t.svg)](https://badge.fury.io/js/f2t)  
 CLI tool for converting Flow code into Typescript  
 
 ## Usage
