@@ -73,13 +73,13 @@ export const converter = async (fullPath: string): Promise<void | Error> => {
     // prettier
     // @ts-ignore
     const formattedCode = prettier.format(deletedAtFlowCode, prettierDefaultConfig)
-    await fs.writeFile(fullPath, formattedCode, (err: NodeJS.ErrnoException) => {
+    await fs.writeFile(fullPath, formattedCode, err => {
       if(err) throw err
     })
     // js → ts,tsx
     const extension = isJsxFile(formattedCode) ? 'tsx' : 'ts'
     const newPath = fullPath.replace(/(js|jsx)$/, '') + extension
-    await fs.rename(fullPath, newPath, (err: NodeJS.ErrnoException) => {
+    await fs.rename(fullPath, newPath, err => {
       if(err) throw err
     })
     const cwdPath = path.resolve('.')
