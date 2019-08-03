@@ -29,23 +29,21 @@
   },
   "homepage": "https://github.com/nd-02110114/f2t#readme",
   "dependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-syntax-class-properties": "^7.0.0",
-    "@babel/plugin-syntax-flow": "^7.0.0",
-    "@babel/plugin-syntax-jsx": "^7.0.0",
-    "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
-    "@cureapp/babel-plugin-flow-to-typescript": "^0.3.7",
-    "chalk": "^2.4.1",
-    "ms": "^2.1.1",
-    "prettier": "^1.14.3",
-    "yargs": "^12.0.5"
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-syntax-class-properties": "^7.2.0",
+    "@babel/plugin-syntax-flow": "^7.2.0",
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.2.0",
+    "babel-plugin-flow-to-typescript": "^0.4.0",
+    "chalk": "^2.4.2",
+    "prettier": "^1.18.2",
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/node": "^10.11.7",
-    "@types/prettier": "^1.13.2",
-    "@types/yargs": "^12.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.3"
+    "@types/node": "^12.6.9",
+    "@types/prettier": "^1.18.1",
+    "@types/yargs": "^13.0.2",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
   }
 }

@@ -5,6 +5,6 @@ module.exports =  {
     "@babel/plugin-syntax-flow",
     "@babel/plugin-syntax-jsx",
     "./dist/babel-plugin-flow-to-typescript-react/index.js",
-    "@cureapp/babel-plugin-flow-to-typescript"
+    "babel-plugin-flow-to-typescript"
   ]
 }
